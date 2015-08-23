@@ -27,7 +27,16 @@ title('PDF and CDF for normal distribution')
 % Find the probability that x is between 4.2 and 5.5.
 P = cdf(56)-cdf(43)
 
-% Task 2.1.4 Loading data file
+%% Task 2.1.4 Loading data file
+testmat= rand(2,3)*4-1; % Random numbers between -1 and 3
+save('testmat.mat','testmat')
+% Clear all variables, and Load from file
+clear all
+load('testmat.mat','testmat')
+testmat
+% Calculate the mean of every column in the matrix
+dim_column = 1;
+mean_of_columns = mean(testmat,dim_column)
 
 %% Task 2.2 Vector and Matrix
 
@@ -40,7 +49,6 @@ for i = 1:6
   end
 end
 matrixA
-
 
 
 %% Task 2.3 Loop

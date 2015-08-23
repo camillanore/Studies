@@ -2,6 +2,14 @@
 % Author: Camilla Nore
 % Date: 2015-08-13
 
+%% Task 2.1 Variable and statement
+%  Task 2.1.1 Check output and order of operations
+25/4*4
+3+4^2
+4/12+12
+3^2
+(5-2)*3
+
 %% Task 2.2 Vector and Matrix
 
 % 2.2.2 

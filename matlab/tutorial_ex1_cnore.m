@@ -10,6 +10,25 @@
 3^2
 (5-2)*3
 
+% Task 2.1.2 Rounding numbers
+
+% Task 2.1.3 Normal distribution
+X = linspace(0,10,101);
+mean = 5;
+sigmasq = 1^2;
+pdf = normpdf(X,mean,sigmasq);
+cdf = normcdf(X,mean,sigmasq);
+plot(X,pdf)
+hold on
+plot(X,cdf)
+hold off
+title('PDF and CDF for normal distribution')
+
+% Find the probability that x is between 4.2 and 5.5.
+P = cdf(56)-cdf(43)
+
+% Task 2.1.4 Loading data file
+
 %% Task 2.2 Vector and Matrix
 
 % 2.2.2 

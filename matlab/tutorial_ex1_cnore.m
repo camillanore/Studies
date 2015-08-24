@@ -58,6 +58,19 @@ selected2 = matrixA(1:5, [2,3,5]) % selection by list of indices
 %(c) Vector with elements from the first row.
 vector = matrixA(1,[1,3,4,5])'
 
+%% Task 2.2.3 Square matrix
+A = [1,3;2,3]
+B = rand(2)
+% (a)
+check_inverse = A*A^-1 - eye(2)
+% (b)
+check_division_minus_inverse = A/B - A*B^-1 % A division operator x = A\b 
+% produces the solution using Gaussian elimination, without forming the 
+% inverse. See mldivide (\) and mrdivide (/) for further information.
+% http://se.mathworks.com/help/matlab/ref/inv.html 
+% (c)
+
+
 %% Task 2.3 Loop
 
 % 2.3.1 Row vector, by loop and vector notation.

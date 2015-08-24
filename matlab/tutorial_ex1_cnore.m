@@ -49,7 +49,14 @@ for i = 1:6
   end
 end
 matrixA
-
+%(a) Matrix of dimension 4*4 from center.
+center4 = matrixA(2:5,2:5)
+%(b) Matrix of dimension 5*3 selecting column 2, 3, 5.
+selected = matrixA(1:5, 2:4);
+selected(:,3) = matrixA(1:5,5)    % selection by substituting last row
+selected2 = matrixA(1:5, [2,3,5]) % selection by list of indices
+%(c) Vector with elements from the first row.
+vector = matrixA(1,[1,3,4,5])'
 
 %% Task 2.3 Loop
 

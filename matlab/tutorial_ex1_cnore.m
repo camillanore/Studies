@@ -60,7 +60,8 @@ vector = matrixA(1,[1,3,4,5])'
 
 %% Task 2.2.3 Square matrix
 A = [1,3;2,3]
-B = rand(2)
+B = [7,6
+     8,9]
 % (a)
 check_inverse = A*A^-1 - eye(2)
 % (b)
@@ -69,7 +70,39 @@ check_division_minus_inverse = A/B - A*B^-1 % A division operator x = A\b
 % inverse. See mldivide (\) and mrdivide (/) for further information.
 % http://se.mathworks.com/help/matlab/ref/inv.html 
 % (c)
+check_ldivision = A\B -A^-1*B
+% (d)
+check_commutativity_of_transposed = (A*B)' - B'*A'
 
+%% Task 2.2.4
+Y = [2,2,3,4.5,2.3,5.5,6.2,8]'
+X = ones(8,2);
+X(:,2) = [4.2 3.7 2.9 7.1 2.5 6 4.9 6.9]
+
+% (a)
+beta = (X'*X)^-1 * X'*Y
+% (b)
+sigma = 1
+etha = sigma^2*(X'*X)
+
+%% Task 2.2.5 
+% Generate this matrix, but what is the trick?
+m = [
+0 0 1 1 1 1 0 0
+0 1 2 3 2 2 1 0
+2 3 4 4 4 4 1 1
+1 3 4 5 4 3 2 1
+0 0 2 3 2 2 0 0
+0 0 0 1 1 0 0 0 ];
+
+% (a)
+p = zeros(50);
+%(b)
+p(5:10,5:12) = m;
+% (c)
+p(20:25,30:37) = m;
+%(d)
+surf(p)
 
 %% Task 2.3 Loop
 

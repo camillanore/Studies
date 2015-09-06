@@ -2,9 +2,9 @@
 """
 Created on Tue Sep 01 15:22:23 2015
 
-@author: NBCNO1
+@author: Camilla Nore
 """
-# Task: s=sum(1/k) for k=1 to M=100
+# Exercise 2.10 s=sum(1/k) for k=1 to M=100
 #Explain why the following program does not work
 #s = 0; k = 1; M = 100
 #while k < M:
@@ -29,3 +29,7 @@ for k in range(1,M):
 print 'For loop, Sum of 1/n: ', s2
 
 
+terminal
+
+While loop, Sum of 1/n:  5.17737751764
+For loop, Sum of 1/n:  5.17737751764

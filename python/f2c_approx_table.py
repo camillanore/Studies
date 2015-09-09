@@ -5,6 +5,7 @@ Created on Tue Sep 08 14:31:30 2015
 @author: Camilla Nore
 """
 
+"""Todays exercises:
 # 2.2 (f2c_approx_table.py, side 84), 
 # 3.3 (roots_quadratic.py, side 129), 
 # 3.11 (area_triangle.py, side 134), 
@@ -18,7 +19,7 @@ Created on Tue Sep 08 14:31:30 2015
 # (F) to Celsius (C) degrees:
     
 # C ≈ C_approx = (F − 30)/2 (2.2)
-
+"""
 
 F = 0
 dF = 10
@@ -29,6 +30,7 @@ while F <= 100:
     F = F + dF                    
 print '------------------' 
 
+"""Example output:
 terminal> python f2c_approx_table.py
   0.0 -17.8 -15.0
  10.0 -12.2 -10.0
@@ -42,3 +44,4 @@ terminal> python f2c_approx_table.py
  90.0  32.2  30.0
 100.0  37.8  35.0
 ------------------
+"""

@@ -6,19 +6,19 @@ Created on Tue Sep 08 14:31:30 2015
 """
 
 """Todays exercises:
-# 2.2 (f2c_approx_table.py, side 84), 
-# 3.3 (roots_quadratic.py, side 129), 
-# 3.11 (area_triangle.py, side 134), 
-# 3.16 (gaussian2.py, side 136), 
-# 3.23 (Heaviside.py, side 139
+2.2 (f2c_approx_table.py, side 84), 
+3.3 (roots_quadratic.py, side 129), 
+3.11 (area_triangle.py, side 134), 
+3.16 (gaussian2.py, side 136), 
+3.23 (Heaviside.py, side 139
 
-# Exercise 2.2: Generate an approximate Fahrenheit-Celsius
-# conversion table
+Exercise 2.2: Generate an approximate Fahrenheit-Celsius
+conversion table
 
-# Many people use an approximate formula for quickly converting Fahrenheit
-# (F) to Celsius (C) degrees:
+Many people use an approximate formula for quickly converting Fahrenheit
+(F) to Celsius (C) degrees:
     
-# C ≈ C_approx = (F − 30)/2 (2.2)
+C ≈ C_approx = (F − 30)/2 (2.2)
 """
 
 F = 0

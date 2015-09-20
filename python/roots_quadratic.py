@@ -37,7 +37,7 @@ def main():
     print "nosetests roots_quadratic.py -v -s"
     print "---"
     print "Example, the roots of x^2 - 2x +2 =0 is:"
-    print roots(1,-2,2)
+    print roots(1,4,16)
     print "..."
     print "Running tests from main function:"
     test_sqrt()

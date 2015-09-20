@@ -73,15 +73,16 @@ print gaussian(x=1, m=3, s=1)
 def air_resistance(velocity,           #m/s
                    radius=0.11,         #m
                    drag_coefficient=0.2):   #no units
-        # navngi konstante variable med k            
-    k_air_density = 1.2 # kg/m**3
+                    
+    k_air_density = 1.2 # kg/m**3 
     area = np.pi*radius**2
     drag_force = (0.5*drag_coefficient*k_air_density*
                         area*velocity**2)
     return drag_force # N
-    #del an funk
-#ikke del av funk
+   
 print air_resistance(velocity=4)
+print air_resistance(velocity=10)
+print air_resistance(velocity=120)
 
 air_drag=[]
 velocity=[]
@@ -91,3 +92,7 @@ for i in range(0,400):
 pylab.plot(velocity,air_drag)
 pylab.xlabel('Velocity, m/s')
 pylab.ylabel('Drag force, N')
+
+def convert_kmh_to_ms( vel_kmh):
+   return vel_kmh/3.6 # m/s
+   

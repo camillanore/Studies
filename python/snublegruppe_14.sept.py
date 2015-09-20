@@ -57,7 +57,7 @@ def quadratic_solver(a, b, c):
 
 roots = quadratic_solver(a, b, c)
 
-print "\nx1 = %g   ::   x2 = %g" %(roots[0], roots[1])
+print 'x1 = {:.2f}'.format(roots[0]), 'x2 = {:.2f}'.format(roots[1]
 
 
 # Oppgave 2
@@ -68,6 +68,7 @@ print "\nx1 = %g   ::   x2 = %g" %(roots[0], roots[1])
 # print This program solves a 2nd degree eq. on the form ax^2 + bx + c = 0, 
 #where a, b and c are arbitrary constants.
 
+# print sys.argv[0]
 
 a = float(sys.argv[1])
 b = float(sys.argv[2])
@@ -131,8 +132,8 @@ except:
 
 def quadratic_solver(a, b, c):
     try:
-        x1 = (-b + npsci.sqrt(b**2 - 4*a*c))/2*a
-        x2 = (-b - npsci.sqrt(b**2 - 4*a*c))/2*a
+        x1 = (-b + math.sqrt(b**2 - 4*a*c))/2*a
+        x2 = (-b - math.sqrt(b**2 - 4*a*c))/2*a
     except ValueError:
         print "\nComplex roots!\n"
         sys.exit(1)

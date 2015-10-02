@@ -1,0 +1,121 @@
+>> mat_1120_OBLIG
+
+P =
+
+    1.0000    0.7000         0         0         0
+         0         0    0.5000         0         0
+         0    0.3000         0    0.6500         0
+         0         0    0.5000         0         0
+         0         0         0    0.3500    1.0000
+
+
+p_s3_s2_s1 =
+
+    0.3500
+
+
+p_s3_s1_2steg =
+
+    0.3500
+
+
+k_vec =
+
+     2     3     4    40    80
+
+The P^k matrix for k=2 is showed below, and p(s4->s2) is 3.250000e-01.
+
+Pk =
+
+    1.0000    0.7000    0.3500         0         0
+         0    0.1500         0    0.3250         0
+         0         0    0.4750         0         0
+         0    0.1500         0    0.3250         0
+         0         0    0.1750    0.3500    1.0000
+
+The P^k matrix for k=3 is showed below, and p(s4->s2) is 0.000000e+00.
+
+Pk =
+
+    1.0000    0.8050    0.3500    0.2275         0
+         0         0    0.2375         0         0
+         0    0.1425         0    0.3087         0
+         0         0    0.2375         0         0
+         0    0.0525    0.1750    0.4638    1.0000
+
+The P^k matrix for k=4 is showed below, and p(s4->s2) is 1.543750e-01.
+
+Pk =
+
+    1.0000    0.8050    0.5162    0.2275         0
+         0    0.0712         0    0.1544         0
+         0         0    0.2256         0         0
+         0    0.0712         0    0.1544         0
+         0    0.0525    0.2581    0.4638    1.0000
+
+The P^k matrix for k=40 is showed below, and p(s4->s2) is 2.339171e-07.
+
+Pk =
+
+    1.0000    0.9000    0.6667    0.4333         0
+         0    0.0000         0    0.0000         0
+         0         0    0.0000         0         0
+         0    0.0000         0    0.0000         0
+         0    0.1000    0.3333    0.5667    1.0000
+
+The P^k matrix for k=80 is showed below, and p(s4->s2) is 7.997130e-14.
+
+Pk =
+
+    1.0000    0.9000    0.6667    0.4333         0
+         0    0.0000         0    0.0000         0
+         0         0    0.0000         0         0
+         0    0.0000         0    0.0000         0
+         0    0.1000    0.3333    0.5667    1.0000
+
+The cumulativ probabilty p(s4->s2) for 2 steps is 0.325000.
+The cumulativ probabilty p(s4->s2) for 3 steps is 0.325000.
+The cumulativ probabilty p(s4->s2) for 4 steps is 0.479375.
+The cumulativ probabilty p(s4->s2) for 40 steps is 0.619047.
+The cumulativ probabilty p(s4->s2) for 80 steps is 0.619048.
+
+ans =
+
+     0     1
+     0     0
+     0     0
+     0     0
+     1     0
+
+
+xK1_approx =
+
+    1.0000    0.9000    0.6667    0.4333         0
+
+
+xK5_approx =
+
+         0    0.1000    0.3333    0.5667    1.0000
+
+
+y =
+
+    2.9710
+    2.4638
+    1.7391
+
+>> walk([.1 .2 .3])
+
+ans =
+
+    3.5522
+    2.8358
+    1.8507
+
+>> walk([1 2 3])
+Error: p( 1 ) has value out of bounds: 1.000000.
+ans =
+
+     1
+     2
+     7

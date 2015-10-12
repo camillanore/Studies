@@ -33,7 +33,7 @@ Filename: plot_Taylor_sin.py.
 """
 import math
 import matplotlib.pyplot as plt
-
+#HINT: Difflikning, bruk en smartere måte for å løse oppgaven!
 def terms(ti,x_0, N):
     i = 0
     t_list = []
@@ -43,11 +43,11 @@ def terms(ti,x_0, N):
         t_list.append(t)
     return np.array(t_list)
 
-def ti_sin (i, x_0):
-    return (-1)**i*((x_0**(2*i+1))/math.factorial(2*i+1))
+def ti_sin (x, i):
+    return (-1)**i*((x**(2*i+1))/math.factorial(2*i+1))
 
 def visualize(t):
-    for i in range(0,2*math.pi): #change from len (t) to 2*pi
+    for i in range(0,4*math.pi): #change from len (t) to 4*pi
         plt.plot(i, math.log(abs(t[i])),'ro',)
     plt.xlabel('i')
     plt.ylabel('log')

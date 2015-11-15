@@ -15,15 +15,27 @@ for reading and changing h. Filename: Derivative_protected.py.:
 """
 def f(x):
     return x**3
-
-dfdx = Derivative(f)
-x = 2
-dfdx(x)
  
 class Derivative:
     def __init__(self, f, h=1E-5):
-        self.f =f
-        self.h = float(h)
-    def __call_(selv, x):
-        f, h = self.f, self.h  #make short forms
+        self._f = f
+        self._h = float(h)
+    def __call__(self, x):
+        f, h = self._f, self._h  #make short forms
         return (f(x+h) - f(x))/h
+    def get_precision(self):
+        return self._h
+    def set_precision(self, h):
+        self._h = h
+        
+dfdx = Derivative(f)
+x = 2
+print dfdx.get_precision()
+dfdx.set_precision(1E-9)
+print dfdx(x)
+
+"""
+Printed output:
+1e-05
+12.0000009929
+"""

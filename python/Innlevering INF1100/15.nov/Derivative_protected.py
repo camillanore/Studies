@@ -2,7 +2,7 @@
 """
 Created on Sun Nov 15 21:00:30 2015
 
-@author: NBCNO1
+@author: Camilla Nore
 """
 """
 Exercise 7.18: Modify a class for numerical differentiation
@@ -34,8 +34,7 @@ print dfdx.get_precision()
 dfdx.set_precision(1E-9)
 print dfdx(x)
 
-"""
-Printed output:
+"""Output:
 1e-05
 12.0000009929
 """

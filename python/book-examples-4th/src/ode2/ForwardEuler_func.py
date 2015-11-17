@@ -20,11 +20,16 @@ def f(u, t):
 u, t = ForwardEuler(f, U0=1, T=4, n=20)
 
 # Compare numerical solution and exact solution in a plot
-from scitools.std import plot, exp
-u_exact = exp(t)
-plot(t, u, 'r-', t, u_exact, 'b-',
-     xlabel='t', ylabel='u', legend=('numerical', 'exact'),
-     title="Solution of the ODE u'=u, u(0)=1", savefig='tmp.pdf')
+
+import matplotlib.pyplot as plt 
+import math
+u_exact = math.exp(t)
+plt.plot(t, u, 'r-', t, u_exact, 'b-')
+plt.xlabel='t' 
+plt.ylabel='u'
+plt.legend=('numerical', 'exact')
+plt.title="Solution of the ODE u'=u, u(0)=1"
+plt.savefig='tmp.pdf'
 
 # More exact verification
 

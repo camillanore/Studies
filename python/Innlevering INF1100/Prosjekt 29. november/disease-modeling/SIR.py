@@ -2,21 +2,8 @@
 """
 Created on Mon Nov 23 16:15:19 2015
 
-@author: NBCNO1
+@author: Camilla Nore
 """
-"""
-Obligatoriske innleveringsoppgaver: 
-E.41 (SIR.py, side 782, 2 poeng), 
-
-E.42 (SIR_class.py, side 784, 2 poeng), 
-E.43 (SIRV.py, side 785, 2 poeng), 
-E.44 (SIRV_varying_p.py, side 786, 2 poeng), 
-E.45 (SIRV_optimal_duration.py, side 786, 2 poeng), 
-E.46 (SIZR.py, side 786, 2 poeng), 
-E.47 (Night_of_the_Living_Dead.py, side 789, 2 poeng), 
-E.48 (war_on_zombies.py, side 789, 4 poeng)
-"""
-
 """
 Exercise E.41: Simulate the spreading of a disease by a SIR
 model
@@ -24,7 +11,6 @@ model
 Make a function for solving the differential equations in the SIR model
 by any numerical method of your choice. Make a separate function for
 visualizing S(t), I(t), and R(t) in the same plot.
-Visualizing S(t), I(t), and R(t) in the same plot.
 
 Adding the equations shows that S' + I' + R' = 0, which means that
 S +I +R must be constant. Perform a test at each time level for checking
@@ -42,42 +28,71 @@ Certain precautions, like staying inside, will reduce β. Try β = 0.0001
 and comment from the plot how a reduction in β influences S(t). (Put
 the comment as a multi-line string in the bottom of the program file.)
 
-Filename: SIR.py
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import ODESolver
 
-# Time unit: 1 h
-beta = 0.0005 #then try beta = 0.0001
-nu = 0.1
-print 'beta:', beta, 'nu:', nu
+"""Global values for initial conditions and parameters"""
 
-dt = 0.5             # 30 min (?)
-D = 30               # simulate for D days
-N = int(D*24/dt)     # corresponding no of hours
+beta = 0.0005 # Infection rate per day
+mu = 0.1      # Recovery rate per day
+SIR_initial = (1500, 1, 0) 
 
+def main():
+    print 'SIR modelling'
+    t_days, SIR = SIR_solver(beta, mu)
+    SIR_visualize(t_days, SIR)
+    print 'Condition at last day=%d: S=%.f, I=%.f, R=%.0f' %(
+        t_days[-1], SIR[-1,0], SIR[-1,1], SIR[-1,2])
+    # TODO: make a function SIR solver
+    # TODO: make a function SIR_visualize
 
-t = np.linspace(0, N*dt, N+1)
-S = np.zeros(N+1)
-I = np.zeros(N+1)
-R = np.zeros(N+1)
+def SIR_solver(beta, mu):
+    """ Solve the SIR system, and return a numpy array with t, S, I and R."""
+    n_steps = 120
+    t = np.linspace(0, 250, n_steps)    
+    SIR = np.zeros((n_steps, 3))
+    rk4_obj = ODESolver.RungeKutta4(SIR_timederivative)
+    rk4_obj.set_initial_condition(SIR_initial)
+    SIR, t = rk4_obj.solve(t, terminate = SIR_validate)
+    return t, SIR
 
-# Initial condition
-S[0] = 1500
-I[0] = 1
-R[0] = 0
+def SIR_timederivative(SIR, t):
+    """Return the SIR d/dt values for the given input data [S, I, R]."""       
+    Sddt = - beta*SIR[0]*SIR[1]
+    Iddt =   beta*SIR[0]*SIR[1] - mu*SIR[1]
+    Rddt =                        mu*SIR[1]
+    return [Sddt, Iddt, Rddt]
 
-# Step equations forward in time
-for n in range(N):
-    S[n+1] = S[n] - dt*beta*S[n]*I[n]
-    I[n+1] = I[n] + dt*beta*S[n]*I[n] - dt*nu*I[n]
-    R[n+1] = R[n] + dt*nu*I[n]
+def SIR_validate(SIR, t, step_no):
+    norm_error = np.sum(SIR[step_no]) - np.sum(SIR_initial)    
+    epsilon = 1e-6
+    if norm_error > epsilon:
+        print 'Error: Equality condition broken at step=%d with error %f' %(step_no, norm_error)
+        return True
+    else:
+        """ Everything is okaaaaay"""
+        return False
+        
+def SIR_visualize(t, SIR):
+    plt.figure('SIR')
+    plt.plot(t, SIR)
+    plt.legend(['Susceptibles', 'Infected', 'Recovered'])
+    plt.show()
 
-plt.plot(t, S, 'k-', t, I, 'b-', t, R, 'r-')
-plt.legend(['S', 'I', 'R'], loc='lower right')
-plt.xlabel('hours')
-plt.savefig('tmp.pdf')
-plt.savefig('tmp.png')
+if __name__ == '__main__':
+    main()
+    
+"""Output for beta=0.0005:
+SIR modelling
+Condition at last day=60: S=1, I=12, R=1488
 
-print S[:4], I[:4], R[:4]
-plt.show()
+Output for beta=0.0001 and t =300:
+Condition at last day=300: S=625, I=0, R=876
+
+When the infection rate beta is reduced, the pace of spreading of the disease
+goes down dramatically. The disease thus develops at a much slower pace, and
+there is no epidemy. 
+
+"""
